@@ -92,7 +92,7 @@
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
                                         @foreach ($item->children as $all)
                                             <li class="nav-item ">
-                                                <a class="nav-link active " href="#">{{ $all->name }}</a>
+                                                <a class="nav-link active " href="{{ route('trangdm', $all->id) }}">{{ $all->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
