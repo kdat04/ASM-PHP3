@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.header_toolbar {
+    position: relative;
+}
+
+.header_toolbar::after {
+    content: '';
+    display: block;
+    width: 1920px;
+    height: 2px;
+    /* Độ dày của đường kẻ */
+    background-color: red;
+    /* Màu của đường kẻ */
+    position: absolute;
+    bottom: 0;
+    left: -335px;
+}
+
+.duongke {
+    position: relative;
+}
+
+.duongke::after {
+    content: '';
+    display: block;
+    width: 433px;
+    height: 1px;
+    /* Độ dày của đường kẻ */
+    background-color: red;
+    /* Màu của đường kẻ */
+    position: absolute;
+    bottom: -25px;
+    left: 12px;
+}
+
+.menu_hd_ft {
+    position: relative;
+    z-index: 2;
+}
+
+.menu_hd_ft::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -335px;
+    width: 1920px;
+    height: 100%;
+    background-color: red;
+    z-index: -1;
+}
+
+.dashed-line {
+    border-top: 1px dashed #b6b6b6;
+    margin: 10px 0;
+}
+
+.nav-after {
+    position: relative;
+}
+
+.nav-after::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 30px;
+    /* Độ dày của đường kẻ */
+    background-color: red;
+    /* Màu của đường kẻ */
+    position: absolute;
+    bottom: 5px;
+    left: -5px;
+}
+
+.nav-after-1 {
+    position: relative;
+}
+
+.nav-after-1::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 50px;
+    /* Độ dày của đường kẻ */
+    background-color: red;
+    /* Màu của đường kẻ */
+    position: absolute;
+    bottom: -8px;
+    left: -13px;
+}
+
+.main_toolbar {
+    position: relative;
+}
+
+.main_toolbar::after {
+    content: '';
+    display: block;
+    width: 633px;
+    height: 2px;
+    /* Độ dày của đường kẻ */
+    background-color: red;
+    /* Màu của đường kẻ */
+    position: absolute;
+    bottom: -10px;
+    left: -28px;
+}
+/* HOVEW */
+
+.menu-cha ul {
+    display: none;
+    position: absolute;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.menu-cha li:hover > ul {
+    display: block;
+}
+
+.menu-cha li {
+    position: relative;
+}
+
+
+.menu-cha ul li {
+    width: 220px;
+    padding: px;
+    border-radius: 50%;
+}
+.menu-con{
+    box-shadow: 0 0 5px 0 rgb(134, 134, 134);
+}
+.menu-con li a{
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+.menu-con li a:hover {
+    transform: translateY(-5px);
+
+}
+
+/* tin xem nhiều + tin mới */
+.tab-content {
+    border-top: none;
+    padding: 10px;
+}
+.nav-link{
+    color: black;
+}
+.nav-link:hover{
+    color: black;
+}
+.nav-pills .nav-link.active {
+    background-color: red;
+    color: white;
+}
