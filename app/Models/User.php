@@ -13,6 +13,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    const TYPE_ADMIN = 'admin';
+    const TYPE_MEMBER = 'member';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
     ];
 
     /**
@@ -43,4 +47,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'user_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
+    }
 }

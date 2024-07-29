@@ -18,7 +18,9 @@ class ViewController extends Controller
         $newPosts = Post::orderBy('created_at', 'desc')->take(5)->get();
         $gocNhin = Category::where('id', 10)->with(['postCate', 'children'])->first();
         $theThao = Category::where('id', 6)->with(['postCate', 'children'])->first();
-        $loadPost = Post::with('category')->paginate(2);
+        $loadPost = Post::with('category')->paginate(15);
+
+
 
         return view(
             'client.trangchu',
@@ -30,6 +32,7 @@ class ViewController extends Controller
                 'gocNhin',
                 'theThao',
                 'loadPost',
+
             )
         );
     }
@@ -46,9 +49,9 @@ class ViewController extends Controller
         }
 
         if ($dateCate->post()->first() == null) {
-            $post = $dateCate->postCate()->paginate(1);
+            $post = $dateCate->postCate()->paginate(10);
         } else {
-            $post = $dateCate->post()->paginate(1);
+            $post = $dateCate->post()->paginate(10);
         }
         // dd($post);
         return view('client.trangdm', compact(
@@ -136,12 +139,17 @@ class ViewController extends Controller
     }
 
 
-    public function admin()
-    {
 
+
+
+//  ADMIN
+    public function home()
+    {
         return view('admin.home');
     }
 
-
-
+    public function posts()
+    {
+        return view('admin.posts.index');
+    }
 }

@@ -5,8 +5,8 @@
         <div class="row mt-4 d-flex justify-content-between">
             <div class="col-8 p-3">
                 @foreach ($viewsHighest as $top)
-                    <a href="{{ route('chitiettin', $top) }}" class="text-decoration-none text-dark">
-                        <img src="{{ asset('img/' . $top->img) }}" alt=" " style=" width: 100%;">
+                    <a href="{{ route('client.chitiettin', $top) }}" class="text-decoration-none text-dark">
+                        <img src="{{ asset($top->img) }}" alt=" " style=" width: 100%;">
                         <div class="row">
                             <h2 class="mt-3" style="font-size: 25px;">{{ $top->title }}</h2>
                             <p>{{ $top->short_description }}</p>
@@ -46,7 +46,7 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
                             @foreach ($gocNhin->children as $gn)
                                 <li class="nav-item ">
-                                    <a class="nav-link active " href="#">{{ $gn->name }}</a>
+                                    <a class="nav-link active " href="{{ route('client.trangdm', $gn->id) }}">{{ $gn->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -62,10 +62,10 @@
             <div class="col-6 card" style="width: 530px">
                 <div class="row fw-semibold">
                     @foreach ($loadPost as $all)
-                        <a href="{{ route('chitiettin', $all) }}" class="text-decoration-none text-dark">
+                        <a href="{{ route('client.chitiettin', $all) }}" class="text-decoration-none text-dark">
                             <div class="row d-flex justify-content-between mt-3">
                                 <div class="col-4">
-                                    <img src="{{ asset('img/' . $all->img) }}" alt="" style=" width: 100%;"
+                                    <img src="{{ asset($all->img) }}" alt="" style=" width: 100%;"
                                         height="150px">
                                 </div>
                                 <div class="col-8">
@@ -92,7 +92,7 @@
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
                                         @foreach ($item->children as $all)
                                             <li class="nav-item ">
-                                                <a class="nav-link active " href="{{ route('trangdm', $all->id) }}">{{ $all->name }}</a>
+                                                <a class="nav-link active " href="{{ route('client.trangdm', $all->id) }}">{{ $all->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -102,10 +102,10 @@
                         <div class="row">
                             @foreach ($item->postCate()->orderBy('views', 'desc')->limit(1)->get() as $dm)
                                 {{-- {{ dd($ts) }} --}}
-                                <a href="{{ route('chitiettin', $item) }}" class="text-decoration-none text-dark">
+                                <a href="{{ route('client.chitiettin', $item) }}" class="text-decoration-none text-dark">
                                     <div class="row d-flex mb-2 mt-1">
                                         <div class="col-6">
-                                            <img src="{{ asset('img/' . $dm->img) }}" alt="" style=" width: 100%;">
+                                            <img src="{{ asset($dm->img) }}" alt="" style=" width: 100%;">
                                         </div>
                                         <div class="col-6">
                                             <h5 class="fw-bold mt-3">{{ $dm->title }}</h5>
@@ -132,7 +132,7 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
                             @foreach ($theThao->children as $tt)
                                 <li class="nav-item ">
-                                    <a class="nav-link active " href="#">{{ $tt->name }}</a>
+                                    <a class="nav-link active " href="{{ route('client.trangdm', $tt->id) }}">{{ $tt->name }}</a>
                                 </li>
                             @endforeach
                         </ul>

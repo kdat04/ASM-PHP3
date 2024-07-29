@@ -18,10 +18,9 @@ return new class extends Migration
             $table->id();
             $table->string('title', 225);
             $table->text('short_description');
-            $table->text('content_1');
+            $table->text('content');
             $table->string('img', 225)->nullable();
             $table->string('img_description')->nullable();
-            $table->text('content_2');
             $table->integer('views')->default(0);
             $table->foreignIdFor(Category::class)->constrained();
             $table->foreignIdFor(User::class)->constrained();

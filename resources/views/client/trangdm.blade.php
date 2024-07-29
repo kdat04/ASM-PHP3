@@ -5,7 +5,7 @@
     <div class="row custom-menu fw-semibold" style="font-size: 14px">
         <nav class="navbar navbar-expand-lg fw-semibold">
             <div class="container-fluid">
-                <a class="nav-after navbar-brand" style="font-size: 17px" href="{{ route('trangdm', $loadCate->id) }}">{{ $loadCate->name }}</a>
+                <a class="nav-after navbar-brand" style="font-size: 17px" href="{{ route('client.trangdm', $loadCate->id) }}">{{ $loadCate->name }}</a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
                         {{-- {{ dd($post) }} --}}
@@ -14,7 +14,7 @@
                             @if ($item->id == $category->id)
                                 border-bottom border-danger
                             @endif">
-                                <a class="nav-link active" href="{{ route('trangdm', $item) }}">{{ $item->name }}</a>
+                                <a class="nav-link active" href="{{ route('client.trangdm', $item) }}">{{ $item->name }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -27,10 +27,10 @@
         <div class="col-9" style="width: 975px">
             <div class="row fw-semibold mt-4">
                 @foreach ($post as $item)
-                    <a href="{{ route('chitiettin', $item) }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('client.chitiettin', $item) }}" class="text-decoration-none text-dark">
                         <div class="row d-flex mb-2 mt-1">
                             <div class="col-3">
-                                <img src="{{ asset('img/' . $item->img) }}" alt="" style=" width: 100%;">
+                                <img src="{{ asset($item->img) }}" alt="" style=" width: 100%;">
                             </div>
                             <div class="col-8">
                                 <h4 class="fw-bold">{{ $item->title }}
@@ -51,10 +51,10 @@
             <button class="btn btn-danger w-100">YÊU THÍCH</button>
             <div class="row fw-semibold mt-2">
                 @foreach ($topPosts as $item)
-                    <a href="{{ route('chitiettin', $item) }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('client.chitiettin', $item) }}" class="text-decoration-none text-dark">
                         <div class="row d-flex  mb-2 mt-1">
                             <div class="col-5">
-                                <img src="{{ asset('img/' . $item->img) }}" alt="" style=" width: 100%;">
+                                <img src="{{ asset($item->img) }}" alt="" style=" width: 100%;">
                             </div>
                             <div class="col-7">
                                 <h6 class="fw-bold" style="font-size: 14px">{{ $item->title }}

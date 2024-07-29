@@ -41,12 +41,12 @@
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-11">
-                    <p class="fw-normal">{{ $loadNd->content_1 }}</p>
                     <div class="text-center" style="font-size: 13px; background-color: rgb(211, 211, 211)">
-                        <img src="{{ asset('img/' . $loadNd->img) }}" alt="" style=" width: 100%;">
+                        <img src="{{ asset($loadNd->img) }}" alt="" style=" width: 100%;">
                         <span class="mt-anh text center">{{ $loadNd->img_description }}</span>
                     </div>
-                    <p class="mt-3">{{ $loadNd->content_2 }}</p>
+                    <p class="mt-3">{!! $loadNd->content !!}
+                    </p>
                 </div>
             </div>
             <div class="row">
@@ -68,10 +68,10 @@
             <div class="row fw-semibold mt-2">
                 <button class="btn btn-danger w-100">TIN MỚI</button>
                 @foreach ($newPosts as $item)
-                    <a href="{{ route('chitiettin', $item) }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('client.chitiettin', $item) }}" class="text-decoration-none text-dark">
                         <div class="row d-flex  mb-2 mt-1">
                             <div class="col-5">
-                                <img src="{{ asset('img/' . $item->img) }}" alt="" style=" width: 100%;">
+                                <img src="{{ asset($item->img) }}" alt="" style=" width: 100%;">
                             </div>
                             <div class="col-7">
                                 <h6 class="fw-bold" style="font-size: 14px">{{ $item->title }}

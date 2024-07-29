@@ -13,10 +13,10 @@
                     @for ($i = 0; $i < $loadAll->count(); $i++)
                         @if ($i < 10)
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#">{{ $loadAll[$i]->name }}</a>
+                                <a class="nav-link active" href="{{ route('client.trangdm', $loadAll[$i]) }}">{{ $loadAll[$i]->name }}</a>
                                 <ul class="menu-con navbar-nav" style="font-size: 13px">
                                     @foreach ($loadAll[$i]->children as $load)
-                                        <li><a class="nav-link active" href="">{{ $load->name }}</a></li>
+                                        <li><a class="nav-link active" href="{{ route('client.trangdm', $load->id) }}">{{ $load->name }}</a></li>
                                         <div class="dashed-line"></div>
                                     @endforeach
                                 </ul>

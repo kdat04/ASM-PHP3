@@ -12,10 +12,9 @@ class Post extends Model
     protected $fillable = [
         'title',
         'short_description',
-        'content_1',
+        'content',
         'img',
         'img_description',
-        'content_2',
         'views',
         'category_id',
         'user_id',
@@ -23,5 +22,25 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class,'category_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'post_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
 }

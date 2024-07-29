@@ -28,6 +28,22 @@
 
     <!-- Nav Item - category -->
     <li class="nav-item">
+        <a href="{{ route('admin.categories.index') }}" class="nav-link collapsed">
+            <i class="fa-solid fa-list"></i>
+            <span>Categories</span>
+        </a>
+    </li>
+
+        <!-- Nav Item - post -->
+        <li class="nav-item">
+            <a href="{{ route('admin.posts.index') }}" class="nav-link collapsed">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Posts</span>
+            </a>
+        </li>
+
+    <!-- Nav Item - category -->
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category"
             aria-expanded="true" aria-controls="category">
             <i class="fa-solid fa-list"></i>
@@ -41,10 +57,10 @@
                 <a class="collapse-item" href="cards.html">Update Category</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <!-- Nav Item - Product -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product"
             aria-expanded="true" aria-controls="product">
             <i class="fa-solid fa-layer-group"></i>
@@ -59,7 +75,7 @@
                 <a class="collapse-item" href="cards.html">Update Product</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
