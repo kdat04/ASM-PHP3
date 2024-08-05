@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
-    <form class="app-content p-4" action="{{ route('admin.categories.update', $edit) }}" method="POST" enctype="multipart/form-data">
+    <form class="app-content p-4" action="{{ route('admin.categories.update', $edit) }}" method="POST"
+        enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="app-title">
@@ -8,6 +9,11 @@
                 <li class="breadcrumb-item active"><a href="#"><b>Edit Categories</b></a></li>
             </ul>
         </div>
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4">
@@ -17,6 +23,11 @@
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" name="name" id="name"
                                 value="{{ $edit->name }}">
+                                @if ($errors->has('name'))
+                                <div class="alert alert-danger">
+                                    {{ $errors->first('name') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="mt-3">
                             <label for="parent_id" class="form-label">Category</label>

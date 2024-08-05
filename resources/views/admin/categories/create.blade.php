@@ -17,6 +17,11 @@
                                 <div>
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" name="name" id="name">
+                                    @if ($errors->has('name'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('name') }}
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="mt-3">
                                     <label for="parent_id" class="form-label">Category</label>

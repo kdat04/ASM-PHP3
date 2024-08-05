@@ -12,34 +12,64 @@
                 <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Title: </label>
+                        <label for="title" class="form-label">Title: </label>
                         <input type="text" class="form-control" id="title" aria-describedby="emailHelp"
                             name="title">
+                        @if ($errors->has('title'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('title') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="mb-3">
-                        <label for="sku" class="form-label">Short description: </label>
+                        <label for="short_description" class="form-label">Short description: </label>
                         <input type="text" class="form-control" id="short_description" aria-describedby="emailHelp"
                             name="short_description">
+                        @if ($errors->has('short_description'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('short_description') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Content: </label>
                         <textarea class="form-control" id="content" cols="30" rows="10" name="content"></textarea>
+                        @if ($errors->has('content'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('content') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">IMG: </label>
                         <input type="file" class="form-control" id="img" aria-describedby="emailHelp"
                             name="img">
+                        @if ($errors->has('img'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('img') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="mb-3">
                         <label for="img_description" class="form-label">Img description: </label>
                         <input type="text" class="form-control" id="img_description" aria-describedby="emailHelp"
                             name="img_description">
+                        @if ($errors->has('img_description'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('img_description') }}
+                            </div>
+                        @endif
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="views" class="form-label">Views: </label>
                         <input type="text" class="form-control" id="views" aria-describedby="emailHelp"
                             name="views">
-                    </div>
+                        @if ($errors->has('views'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('views') }}
+                            </div>
+                        @endif
+                    </div> --}}
                     <div class="mb-3">
                         <label for="category_id " class="form-label">Categories: </label>
                         <select class="form-select" id="category_id " cols="30" rows="10" name="category_id">
@@ -48,15 +78,14 @@
                                 <option value="{{ $id }}">{{ $item }}</option>
                             @endforeach
                         </select>
+                        @if ($errors->has('category_id'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('category_id') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="mb-3">
-                        <label for="user_id" class="form-label">Users: </label>
-                        <select class="form-select" id="user_id" cols="30" rows="10" name="user_id">
-                            <option value="" selected>...</option>
-                            @foreach ($users as $id => $item)
-                                <option value="{{ $id }}">{{ $item }}</option>
-                            @endforeach
-                        </select>
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     </div>
                     <button class="btn btn-primary" type="submit">Thêm mới</button>
                     <a class="btn btn-danger " href="{{ route('admin.posts.index') }}">Quay lại trang View</a>

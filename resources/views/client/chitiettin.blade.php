@@ -90,13 +90,16 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <textarea class="form-control" placeholder="Chia sẻ ý kiến của bạn" rows="3"></textarea>
-                            <button type="button" class="btn btn-danger w-100 mt-3 opacity-75"
-                                style="width: 180px; font-size: 14px" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="fa-regular fa-user me-2 mt-1"></i>
-                                Đăng nhập để bình luận
-                            </button>
-                            <!-- Modal -->
-                            @include('client.modals/modal-bl')
+                            @auth
+                                <!--  -->
+                                <button type="button" class="btn btn-danger w-100 mt-3">Bình luận</button>
+                            @else
+                                <!-- -->
+
+                                <button type="button" class="btn btn-danger w-100 mt-3 opacity-75"
+                                    style="width: 180px; font-size: 14px"
+                                    onclick="window.location.href='{{ route('login') }}'"> <i class="fa-regular fa-user me-2 mt-1"></i> Đăng nhập để bình luận</button>
+                            @endauth
                         </div>
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -24,15 +26,15 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::query()->pluck('name', 'id')->all();
-        $users = User::query()->pluck('name', 'id')->all();
+        $categories = Category::query()->whereNotNull('parent_id')->pluck('name', 'id')->all();
+        $users = User::query()->where('type', '=', 'admin')->pluck('name', 'id')->all();
         return view('admin.posts.create', compact('categories', 'users'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         $data = $request->except('img');
         if ($request->hasFile('img')) {
@@ -64,7 +66,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         $data = $request->except('img');
         if ($request->hasFile('img')) {

@@ -64,6 +64,10 @@ class ViewController extends Controller
     }
     public function chitiettin(Post $post)
     {
+
+        // Tăng số lượt xem của bài viết
+        $post->increment('views');
+
         $loadAll = Category::query()->with(['parent', 'children'])->whereNull('parent_id')->get();
         $loadNd = Post::where('id', $post->id)->with('category')->first();
         $newPosts = Post::orderBy('created_at', 'desc')->take(5)->get();
@@ -72,6 +76,7 @@ class ViewController extends Controller
             ['id', '<>', $post->id]
         ])->get();
         // dd( $post, $post->id);
+
         return view(
             'client.chitiettin',
             compact(
@@ -142,7 +147,7 @@ class ViewController extends Controller
 
 
 
-//  ADMIN
+    //  ADMIN
     public function home()
     {
         return view('admin.home');

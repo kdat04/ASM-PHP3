@@ -13,8 +13,8 @@
                     <div class="tile-body">
                         <div class="row">
                             <div class="col-4 element-button">
-                                <a class="btn btn btn-primary mb-3" href="{{ route('admin.categories.create') }}" title="Thêm"><i
-                                        class="fas fa-plus"></i>
+                                <a class="btn btn btn-primary mb-3" href="{{ route('admin.categories.create') }}"
+                                    title="Thêm"><i class="fas fa-plus"></i>
                                     Tạo mới danh mục</a>
                             </div>
                             <div class="col-8 d-flex justify-content-end" role="search">
@@ -22,6 +22,13 @@
                                 <button class="btn btn-outline-primary ms-2" style="height: 38px" type="submit"><i
                                         class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
+                        </div>
+                        <div class="row">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success">
+                                    {{ session()->get('success') }}
+                                </div>
+                            @endif
                         </div>
                         <table class="table table-hover table-bordered" id="sampleTable">
                             <thead>

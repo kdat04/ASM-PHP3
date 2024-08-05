@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('client')
     ->name('client.')
+    // ->middleware(['auth', 'is_member'])
     ->group(function () {
         Route::get('/',                  [ViewController::class, 'index'])->name('home');
         Route::get('trangdm/{category}', [ViewController::class, 'trangdm'])->name('trangdm');
@@ -31,6 +32,7 @@ Route::prefix('client')
 // admin
 Route::prefix('admin')
     ->name('admin.')
+    ->middleware(['auth','is_admin'])
     ->group(function () {
         Route::get('/',           [ViewController::class, 'home'])->name('home');
         // Categorys
@@ -44,4 +46,4 @@ Route::prefix('admin')
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

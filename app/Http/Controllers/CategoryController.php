@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditCategoryRequest;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -29,10 +32,10 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        Category::query()->create($request->all());
-        return redirect()->route('admin.categories.index');
+        Category::query()->create($request->validated());
+        return redirect()->route('admin.categories.index')->with('success','Thêm mới thành công!');
     }
 
     /**
@@ -52,16 +55,16 @@ class CategoryController extends Controller
         $parentCate = Category::query()->whereNull('parent_id')->get();
         $edit = Category::query()->findOrFail($id);
         // dd($edit);
-        return view('admin.categories.edit', compact('edit', 'parentCate'));
+        return view('admin.categories.edit', compact('edit', 'parentCate'))->with('success','Sửa mới thành công!');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryRequest $request, string $id)
     {
         $edit = Category::query()->findOrFail($id);
-        $edit->update($request->all());
+        $edit->update($request->validated());
         return back();
     }
 
